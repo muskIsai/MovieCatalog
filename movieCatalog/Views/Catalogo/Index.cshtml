@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Ovidio_mvc.Models.Catalogo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row"> <!--Essa linha foi passada pra ca p/ quebrar linda das capas-->
+    @foreach (var item in Model)
+    {
+
+        //Codigo BOOTSTRAP - p/ capa dos filmes
+
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@item.Imagem" alt="@item.Titulo">
+                <div class="caption">
+                    <h3>@Html.DisplayFor(modelItem => item.Titulo)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Sinopse)</p>
+                    <p>Auctor: @Html.DisplayFor(modelItem => item.Director)</p>
+                    <p>Lançamento: @Html.DisplayFor(modelItem => item.AnoLancamento) / Duração: @Html.DisplayFor(modelItem => item.Duracao) Min</p>
+                    <p><a href="/Filme/Exibir/@item.Titulo" class="btn btn-primary" role="button">Assistir</a> <a href="#" class="btn btn-default" role="button">Detalhes</a></p>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+
+    <!--
+    ISSO PODEM SER ELIMNADOS pq sao substituidos pelo BOOTSTRAP
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr> -->
